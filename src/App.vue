@@ -1,15 +1,17 @@
 <template>
-  <a-watermark class="page_main" content="骤雨重山图床" :alpha="0.1">
+  <a-watermark class="page_main" content="柯艺云图床" :alpha="0.1">
     <header>
-      <h1>骤雨重山图床</h1>
+      <h1>柯艺云图床</h1>
       <h2>致力于为开发者提供便捷、免费、稳定、快速的图床服务。</h2>
       <div class="desc">
         <p>无限图片储存数量，你可以上传不限数量的图片！</p>
         <p>图片首次访问后缓存，"永久"有效，包括全球分布的 CDN，以确保尽可能快地提供图像.</p>
-        <p>项目使用无服务器服务搭建，托管在 <a-tag color="gray"><template #icon><icon-cloud /></template>Cloudflare Pages</a-tag> 上运行.
+        <p>图片均托管在 <a-tag color="gray"><template #icon><icon-cloud /></template>Cloudflare</a-tag>
         </p>
-        <p>开源地址： <a-link href="https://github.com/uxiaohan/ZYCS-IMG" target="_blank" icon>ZYCS-IMG</a-link></p>
+        <p>官网地址： <a-link href="https://www.qdqqd.com" target="_blank" icon>柯艺云博客</a-link></p>
       </div>
+      <script charset="UTF-8" id="LA_COLLECT" src="https://testingcf.jsdelivr.net/gh/qdqqd/url-core/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "Jfpcnt0H2uEfXtSf",ck: "Jfpcnt0H2uEfXtSf"})</script>
     </header>
     <main>
       <a-upload draggable :action="ACTION_API" multiple :show-link="false" :image-preview="true"
@@ -28,12 +30,12 @@
             <div class="vh_img_text" v-else>
               <a-input :error="item.fileItem.response == 'Failed'" :default-value="item.fileItem.response" readonly
                 size="mini" @click="item.fileItem.response != 'Failed' && copyStr(item.fileItem.response)">
-                <template #append v-if="item.fileItem.response != 'Failed'">URL</template>
+                <template #append v-if="item.fileItem.response != 'Failed'">复制URL</template>
               </a-input>
               <a-input :error="item.fileItem.response == 'Failed'"
                 :default-value="`![${item.fileItem.name}](${item.fileItem.response})`" readonly size="mini"
                 @click="item.fileItem.response != 'Failed' && copyStr(`![${item.fileItem.name}](${item.fileItem.response})`)">
-                <template #append v-if="item.fileItem.response != 'Failed'">Markdown</template>
+                <template #append v-if="item.fileItem.response != 'Failed'">复制Markdown</template>
               </a-input>
             </div>
           </div>
@@ -80,7 +82,7 @@ const copyStr = async (v: any) => {
     i.select();
     document.body.removeChild(i);
   }
-  Message.success('Copy Success')
+  Message.success('复制成功')
 }
 
 // 上传完毕滚动到最下面
